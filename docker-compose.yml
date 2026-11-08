@@ -1,0 +1,12 @@
+services:
+
+  python-app:
+    build: .
+    container_name: calculadora_app
+
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:latest
+    container_name: redis_server
