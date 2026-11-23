@@ -60,6 +60,8 @@ proyectogit-redis-1   redis:7.4-alpine   redis     Up (healthy)
 
 La aplicación es un proceso de una sola ejecución; por eso no aparece entre los servicios que continúan activos después de la prueba.
 
+![Contenedores de Docker Compose](../docker-compose-ps.png)
+
 ## 3. Confirmar la red propia
 
 Consulta primero el nombre de red generado:
@@ -98,6 +100,8 @@ docker stop $appProbe
 
 En la salida de `Containers` deben aparecer Redis y el contenedor temporal `python-app-run-*`. Esta comprobación complementa la prueba funcional anterior.
 
+![Inspección de la red de Docker](../docker-network-inspect.png)
+
 ## 4. Confirmar persistencia del segundo servicio
 
 Redis guarda sus datos en `/data`, utiliza AOF y conserva la información en el volumen nombrado `redis-data`.
@@ -133,6 +137,8 @@ Lectura desde Redis: mensaje=La aplicación se comunica con Redis
 ```
 
 La aplicación escribió el dato en Redis y luego leyó el mismo valor.
+
+![Prueba de comunicación entre Python y Redis](../comunicacion-python-redis.png)
 
 ## 5. Confirmar el pipeline
 
