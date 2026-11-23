@@ -140,9 +140,5 @@ Envía los cambios a GitHub y abre la pestaña **Actions** del repositorio. El w
 
 **Evidencia 6:** añade una captura del workflow en estado exitoso. El job valida la configuración de Compose, descarga Redis y construye la imagen de Python.
 
-## Evidencias visuales pendientes
-
-- Añadir capturas del terminal con la construcción, la prueba de escritura/lectura, `docker compose ps`, `docker network inspect` (preferiblemente con ambos contenedores conectados) y `docker volume inspect`.
-- Añadir una captura de GitHub Actions cuando se ejecute el workflow en el repositorio.
-
-Las transcripciones anteriores corresponden a resultados reales compartidos; no se presentan capturas simuladas.
+## Evidencias visuales 
+![Ejecución exitosa del workflow CI - Docker](../ci-docker-exitosa.png)
