@@ -1,12 +1,41 @@
 services:
-
   python-app:
-    build: .
-    container_name: calculadora_app
-
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
+      REDIS_PASSWORD: ${REDIS_PASSWORD:?Copia .env.example a .env y configura REDIS_PASSWORD}
+      APP_MESSAGE: ${APP_MESSAGE:-La aplicación se comunica con Redis}
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: "no"
 
   redis:
-    image: redis:latest
-    container_name: redis_server
+    image: redis:7.4-alpine
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["exec redis-server --appendonly yes --requirepass \"$$REDIS_PASSWORD\""]
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:?Copia .env.example a .env y configura REDIS_PASSWORD}
+    volumes:
+      - redis-data:/data
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a \"$$REDIS_PASSWORD\" ping | grep -q PONG"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  redis-data:

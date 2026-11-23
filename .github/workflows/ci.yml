@@ -1,0 +1,28 @@
+name: CI - Docker
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Validar Compose y construir aplicación
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener el código
+        uses: actions/checkout@v4
+
+      - name: Preparar variables de ejemplo
+        run: cp .env.example .env
+
+      - name: Validar configuración de Docker Compose
+        run: docker compose config --quiet
+
+      - name: Construir imágenes del proyecto
+        run: |
+          docker compose pull redis
+          docker compose build python-app
