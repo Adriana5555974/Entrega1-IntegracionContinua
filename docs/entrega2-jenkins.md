@@ -109,6 +109,20 @@ Las capturas deben corresponder a una ejecución real. No se incluyen resultados
 
 ![Jenkins muestra la escritura y lectura del dato en Redis](jenkins-prueba-redis.png)
 
+### Panel principal de Jenkins
+
+![Panel principal con el pipeline](jenkins-dashboard.png)
+
+### Historial de ejecuciones
+
+![Ejecución número 1 exitosa](jenkins-build-history.png)
+
+### Configuración del pipeline desde GitHub
+
+![Repositorio configurado en Jenkins](jenkins-config-scm-repo.png)
+
+![Rama y ruta Jenkinsfile configuradas](jenkins-config-scm-branch.png)
+
 ## Referencias oficiales
 
 - [Instalación de Jenkins con Docker](https://www.jenkins.io/doc/book/installing/docker/)
