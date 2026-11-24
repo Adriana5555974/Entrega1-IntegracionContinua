@@ -101,6 +101,14 @@ Agregar capturas reales a `docs/evidencias/` y enlazarlas aquí:
 
 Las capturas deben corresponder a una ejecución real. No se incluyen resultados simulados.
 
+### Ejecución exitosa del pipeline
+
+![Jenkins muestra la ejecución exitosa](jenkins-build-success.png)
+
+### Prueba de comunicación con Redis
+
+![Jenkins muestra la escritura y lectura del dato en Redis](jenkins-prueba-redis.png)
+
 ## Referencias oficiales
 
 - [Instalación de Jenkins con Docker](https://www.jenkins.io/doc/book/installing/docker/)
